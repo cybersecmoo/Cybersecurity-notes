@@ -5,6 +5,12 @@
 - Intel: `OP DEST, SRC`
 - AT&T: `OP SRC, DEST`
 
+## Binary ##
+
+- Signed numbers (using two's-complement) use the most significant bit to indicate their sign.
+  - So if the most significant nibble is > 7, the value is negative
+- One hex digit is four binary digits, which is a nibble (i.e. 0x33 is 0011 0011 in binary) 
+
 ## Registers ##
 
 ### x86 ###
@@ -42,3 +48,11 @@
     - SF: Sign flag
     - CF: Carry flag
   - For disassembling/RE/exploit dev, generally not necessary to memorise exactly which ops set which flags and in what ways. If needed, can always consult a manual for that.
+
+## Instructions ##
+
+- `sub`, `add`, `cmp`, etc. apply their operands left-to-right, and store in the left (except `cmp`, which doesn't save its result)
+- `cmp` does a subtraction, but only sets flags
+- `test` does a *logical* `AND`, but only sets flags
+- `jb`/`jbe` are for unsigned values (`jl`/`jge` etc. are for signed values)
+- 
