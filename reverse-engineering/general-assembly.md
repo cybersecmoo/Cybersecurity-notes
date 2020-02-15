@@ -15,38 +15,39 @@
 
 ### x86 ###
 
-- EAX (Further broken down into)
-  - ax
-    - ah
-    - al
+- `EAX` (Further broken down into)
+  - `ax`
+    - `ah`
+    - `al`
   - Often used for function return values
-- EBX
-  - bx
-    - bh
-    - bl
-- ECX
+- `EBX`
+  - `bx`
+    - `bh`
+    - `bl`
+- `ECX`
+  - `cx`
   - Often used for counting
-- EDX
-- EIP 
+- `EDX`
+- `EIP` 
   - Instruction Pointer
   - Always points to the next instruction
   - We don't modify this ourselves
-- ESP 
+- `ESP` 
   - Stack pointer
   - Points to the "top" (actually the bottom, in memory) of the stack.
-- EBP
+- `EBP`
   - Base pointer
   - Points to the "base" (actually the top, in memory) of the stack
-- EFLAGS
+- `EFLAGS`
   - Comprises all the flags
   - One bit per flag
   - Combinations of flags can be set by various logical, bitwise, and arithmetic operations
   - The flags can then be used to drive control flow.
   - Flags:
-    - ZF: Zero flag
-    - OF: Overflow flag
-    - SF: Sign flag
-    - CF: Carry flag
+    - `ZF`: Zero flag
+    - `OF`: Overflow flag
+    - `SF`: Sign flag
+    - `CF`: Carry flag
   - For disassembling/RE/exploit dev, generally not necessary to memorise exactly which ops set which flags and in what ways. If needed, can always consult a manual for that.
 
 ## Instructions ##
@@ -55,4 +56,9 @@
 - `cmp` does a subtraction, but only sets flags
 - `test` does a *logical* `AND`, but only sets flags
 - `jb`/`jbe` are for unsigned values (`jl`/`jge` etc. are for signed values)
+- `shr`/`shl` are the shift (logical) right/left instructions. 
+  - These do the following: `x = x / (2^y)` and `x = x * (2^y)` respectively, where `x` and `y` are the operands: `shr x, y`.
+  - `x` is a register or memory location
+  - `y` is an immediate, or the `cx` sub-register
+  - Flags (e.g. `CF`) are set when bits drop off either end 
 - 
