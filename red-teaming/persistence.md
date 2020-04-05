@@ -1,5 +1,7 @@
 # Persistence #
 
+- There is a school of thought which says that persistence is not worth obtaining if you do not have admin rights, since it is too noisy otherwise (too difficult to cover tracks properly)
+
 ## Windows ##
 
 - You can gain persistence by replacing the accessibility executables (e.g. `sethc.exe`)

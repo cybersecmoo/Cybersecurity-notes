@@ -10,10 +10,9 @@
 ### ELF ###
 
  - Headers include (but are not limited to) the following info:
-        - compiler
-        - OS
-        - List of sections in the executable
-        - 
+    - compiler
+    - OS
+    - List of sections in the executable 
 
 ## Basic Constructs ##
 
@@ -63,3 +62,10 @@
         pop     ecx
         ```
    - Callee-save has the `push`/`pop` within the called function itself.
+
+## Memory Management ##
+
+- When allocating a buffer on the stack, the compiler might over-allocate, and then fill the whole allocation with something like `0xC` or other interrupt opcode.
+  - This creates stack guards above and below the actual buffer, and initialises the buffer to something that will cause an interrupt (which can be caught and handled).
+  - The stack guards can then be checked for integrity once the buffer is no longer in use
+  - Note that these kinds of stack guards are not for security (you'd want randomised values, not a constant like `0xC`, for that)
