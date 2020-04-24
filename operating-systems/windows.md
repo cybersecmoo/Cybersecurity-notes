@@ -29,3 +29,11 @@
   - Run the payload
 - Note that anti-virus tools are mostly wise to this, so you will need to obfuscate it carefully if this is the method you want to use
   - Example: my anti-virus decided that this file was infected, due to the command line examples above!
+
+
+## Alternate Streams ##
+
+- If you find a file that is empty, but you feel like there *should* be data in it, check alternate streams.
+  - via `SMB`, you can use `allinfo [filename]` to enumerate the streams (among other things)
+  - You can then `get` on a specific stream: `get [filename]:[stream]`
+

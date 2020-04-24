@@ -67,6 +67,8 @@
   - `x` is a register or memory location
   - `y` is an immediate, or the `cx` sub-register
   - Flags (e.g. `CF`) are set when bits drop off either end 
+- `sar`/`sal` are the arithmetic shift operators
+  - These preserve the signedness of a result
 - `lea` (Load Effective Address) puts the value given by the source operand, into the register in the destination operand. 
   - This takes a form like `lea eax, [ebx+8]` (which would load the memory address given by `ebx + 8` into `eax`)
   - This is as opposed to `mov eax, [ebx+8]`, which would load the *value* at `ebx + 8` into `eax`  
