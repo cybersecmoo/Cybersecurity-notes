@@ -10,6 +10,10 @@
 - Client then sends a `KRB_AP_REQ` request to the service, containing the TGS.
 - Service checks that the user is authorised to access it, using the info contained in the TGS, and responds with a `KRB_AP_REP`.
 
+## How NTLM Works ##
+
+
+
 ## Attacks ##
 
 ### Kerberoasting ###
@@ -48,3 +52,27 @@
 - Once you have found a user without pre-auth, you can request a TGT for them.
 - `GetNPUsers.py` in the Impacket suite can conduct this attack.
 - The TGT can then be passed to John or Hashcat for offline cracking.
+
+### Silver Tickets ###
+
+- TGS tickets are encrypted using the hash of the service in question.
+- If, therefore, we have the hash (or, indeed, password) for a given service that we would not normall have access to, then wqe can forge a TGS that *will* provide us access
+- This TGS is called the Silver Ticket.
+- To generate and use a Silver Ticket, you can use `ticketer.py` from Impacket's scripts: 
+  - `ticketer.py -nthash [NT Hash] -domain-sid [Domain SID] -domain [Domain] -spn [Service SPN] [user]`
+  - `export KRB5CCNAME=/path/to/user.ccache`
+  - Pass the service name to other Impacket scripts using `-k`, e.g. `-k DESKTOP1.lab.local` 
+
+### Golden Tickets ###
+
+- If we have the hash for the `krbtgt` account (the hash which is used to encrypt TGTs), then we can forge a TGT
+- For example, we could forge a TGT that says we are Domain Admins.
+- This TGT is called the Golden Ticket.
+- To generate and use a Golden Ticket, you can use `ticketer.py` from Impacket's scripts: 
+  - `ticketer.py -nthash [NT Hash] -domain-sid [Domain SID] -domain [Domain] [user]`
+  - `export KRB5CCNAME=/path/to/user.ccache`
+  - Pass the DC domain name to other Impacket scripts using `-k`, e.g. `-k DC1.lab.local` 
+
+### Pass-the-Hash ###
+
+- 
