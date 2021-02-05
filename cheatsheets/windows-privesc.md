@@ -1,4 +1,4 @@
-# DNS Admin PrivEsc #
+## DNS Admin PrivEsc
 
 - The DNS service on a DC usually runs with `SYSTEM` permissions.
 - DNS Admins can configure the DNS service with "plugin" DLLs.

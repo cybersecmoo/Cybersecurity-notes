@@ -1,4 +1,4 @@
-# Authentication and Credentials
+# Web Authentication and Credentials
 
 This document lists a bunch of attacks and vulnerabilities that can exist in authentication methods and credential types.
 

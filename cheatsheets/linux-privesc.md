@@ -1,11 +1,4 @@
-# UNIX Hints and Tips #
-
-## Covering Tracks ##
-
-- `unset HISTFILE` will tell Bash that there is no history file
-- Generally (if `$HISTCONTROL` includes `ignoreboth` or `ignorespace`), a command starting with a space (e.g. ` whoami`) will not be logged to the history
-
-## Privilege Escalation ##
+# Linux PrivEsc 
 
 - After enumerating the OS version and distro, it's worth looking for known privesc vulnerabilities
 - `less` has a command `:e` which can be used to examine a new file. If you're using a tool such as `journalctl`, that uses `less` as a pager, and get `journalctl` to read a line which is longer than the terminal width (i.e. gets paged) then you get popped into `less`. If you were running `journalctl` as `root` (via misconfigured `sudo` permissions) then this `less` instance will also be running as `root`, and can use `:e` to view files as `root`.

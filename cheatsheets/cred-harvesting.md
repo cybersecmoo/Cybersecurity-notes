@@ -1,6 +1,6 @@
-# Credential Harvesting Methods #
+# Credential Harvesting Methods
 
-## Windows ##
+## Windows
 
 - By creating a new PasswordFilter, you can access plaintext credentials whenever a user tries to change their password
   - These are DLLs
